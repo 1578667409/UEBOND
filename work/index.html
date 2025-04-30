@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>上海优环邦德新材料科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* 导航栏动画 */
+        nav a {
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3182ce;
+        }
+
+        /* 卡片动画 */
+        .product-card {
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* 按钮动画 */
+        button {
+            transition: all 0.3s ease;
+        }
+
+        /* 平滑滚动效果 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 产品分类按钮样式 */
+        .category-button {
+            @apply bg-blue-500 text-white px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 4rem;
+            white-space: normal;
+            line-height: 1.2;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .category-button:hover {
+            background-color: transparent;
+            color: #3182ce;
+            border-bottom: 2px solid #3182ce;
+        }
+
+        /* 调整首页标题间距 */
+        #hero-section h1 {
+            letter-spacing: 0.2em;
+        }
+
+        /* 激活状态的按钮样式 */
+        .category-button.active {
+            background-color: transparent;
+            color: #3182ce;
+            border-bottom: 2px solid #3182ce;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-800">
+                <img src="https://pic.imagurl.cn/imagurl/2025/04/30/681186b6853aa.png" alt="Company Logo" class="h-8">
+            </a>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="#" class="text-gray-600 hover:text-gray-800" onclick="scrollToSection('hero-section')">首页</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800" onclick="scrollToSection('product-section')">产品系列</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800" onclick="scrollToSection('application-field')">应用领域</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800" onclick="scrollToSection('technology-advantage')">技术优势</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800" onclick="scrollToSection('contact-us')">联系我们</a>
+            </div>
+        </div>
+        <div id="menu" class="hidden md:hidden bg-white px-4 py-2">
+            <a href="#" class="block text-gray-600 hover:text-gray-800 py-1" onclick="scrollToSection('hero-section')">首页</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 py-1" onclick="scrollToSection('product-section')">产品系列</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 py-1" onclick="scrollToSection('application-field')">应用领域</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 py-1" onclick="scrollToSection('technology-advantage')">技术优势</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 py-1" onclick="scrollToSection('contact-us')">联系我们</a>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="mt-16 bg-cover bg-center h-screen relative" id="hero-section" style="background-image: url('https://pic.imagurl.cn/imagurl/2025/04/30/6811870b72f01.jpg');">
+        <div class="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-8">
+            <h1 class="text-5xl font-bold mb-4" style="opacity: 0.5;font-size: 5.8rem;">让粘接更容易</h1>
+        </div>
+    </section>
+
+    <!-- 产品系列 -->
+    <section class="container mx-auto px-4 py-16" id="product-section">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">产品系列（示例）</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 justify-center mb-8">
+            <button class="category-button active" data-category="electronics">电子电器灌封胶</button>
+            <button class="category-button" data-category="pur">PUR - 反应型聚氨酯热熔胶</button>
+            <button class="category-button" data-category="packaging">软包装</button>
+            <button class="category-button" data-category="construction">建筑木工</button>
+            <button class="category-button" data-category="transportation">交通运输粘接</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="product-card bg-white p-6 rounded-md" data-categories="electronics">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product E2218AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2218AB</h3>
+                <p class="text-gray-600 mb-4">类型：电子电器灌封胶</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">应用场景</td>
+                            <td class="border-b px-4 py-2">电机，线圈，变压器</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">推荐工艺</td>
+                            <td class="border-b px-4 py-2">真空浇注</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/100</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">固化条件</td>
+                            <td class="border-b px-4 py-2">加热</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">邵氏硬度</td>
+                            <td class="border-b px-4 py-2">D90</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">玻璃化温度</td>
+                            <td class="border-b px-4 py-2">102℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">线性膨胀系数</td>
+                            <td class="border-b px-4 py-2">24ppm/k</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">耐热等级</td>
+                            <td class="border-b px-4 py-2">H</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">导热系数</td>
+                            <td class="border-b px-4 py-2">1.1W/mk</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">阻燃等级</td>
+                            <td class="border-b px-4 py-2">V0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="electronics">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product E2211AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2211AB</h3>
+                <p class="text-gray-600 mb-4">类型：电子电器灌封胶</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">应用场景</td>
+                            <td class="border-b px-4 py-2">电机，线圈，变压器，电源</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">推荐工艺</td>
+                            <td class="border-b px-4 py-2">真空浇注</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/100</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">固化条件</td>
+                            <td class="border-b px-4 py-2">加热</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">邵氏硬度</td>
+                            <td class="border-b px-4 py-2">D90</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">玻璃化温度</td>
+                            <td class="border-b px-4 py-2">121℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">线性膨胀系数</td>
+                            <td class="border-b px-4 py-2">24ppm/k</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">耐热等级</td>
+                            <td class="border-b px-4 py-2">H</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">导热系数</td>
+                            <td class="border-b px-4 py-2">1.5W/mk</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">阻燃等级</td>
+                            <td class="border-b px-4 py-2">V0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="pur" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5601" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">U5601</h3>
+                <p class="text-gray-600 mb-4">类型：PUR - 反应型聚氨酯热熔胶</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">PU</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型工艺</td>
+                            <td class="border-b px-4 py-2">热熔胶</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶温度</td>
+                            <td class="border-b px-4 py-2">90℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">粘度</td>
+                            <td class="border-b px-4 py-2">12000/100 cps/C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">服装、医用服、家纺</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">特性</td>
+                            <td class="border-b px-4 py-2">通用型</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="pur" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5602" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">U5602</h3>
+                <p class="text-gray-600 mb-4">类型：PUR - 反应型聚氨酯热熔胶</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">PU</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型工艺</td>
+                            <td class="border-b px-4 py-2">热熔胶</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶温度</td>
+                            <td class="border-b px-4 py-2">80℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">粘度</td>
+                            <td class="border-b px-4 py-2">2500/100 cps/C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">服装、防护服、汽车、医用服、皮革、家纺</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">特性</td>
+                            <td class="border-b px-4 py-2">低温，低粘度</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="packaging" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5706AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">U5706AB</h3>
+                <p class="text-gray-600 mb-4">类型：软包装</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">PU</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型工艺</td>
+                            <td class="border-b px-4 py-2">无溶剂</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/50</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶温度</td>
+                            <td class="border-b px-4 py-2">45℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶粘度</td>
+                            <td class="border-b px-4 py-2">1000 cps</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">适用期</td>
+                            <td class="border-b px-4 py-2">30分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">固化条件</td>
+                            <td class="border-b px-4 py-2">48/45 hrs/C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">膜/膜</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">特性</td>
+                            <td class="border-b px-4 py-2">121C蒸煮</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="packaging" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5708AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">U5708AB</h3>
+                <p class="text-gray-600 mb-4">类型：软包装</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">PU</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型工艺</td>
+                            <td class="border-b px-4 py-2">无溶剂</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/65</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶温度</td>
+                            <td class="border-b px-4 py-2">45℃</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">上胶粘度</td>
+                            <td class="border-b px-4 py-2">1000 cps</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">适用期</td>
+                            <td class="border-b px-4 py-2">30分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">固化条件</td>
+                            <td class="border-b px-4 py-2">36/45 hrs/C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">膜/膜</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">特性</td>
+                            <td class="border-b px-4 py-2">低摩擦系数</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 复制软包装的产品卡片作为交通运输粘接初始展示内容 -->
+            <div class="product-card bg-white p-6 rounded-md" data-categories="transportation" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5706AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2315AB</h3>
+                <p class="text-gray-600 mb-4">类型：交通运输粘接</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">EP</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">飞机、火车、汽车、轮船、其他</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/100</td>
+                        </tr>
+						<tr>
+						    <td class="border-b px-4 py-2">固化条件</td>
+						    <td class="border-b px-4 py-2">室温</td>
+						</tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合后粘度</td>
+                            <td class="border-b px-4 py-2">触变体 cps/23C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">适用期</td>
+                            <td class="border-b px-4 py-2">40分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">初强时间</td>
+                            <td class="border-b px-4 py-2">240分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">终强时间</td>
+                            <td class="border-b px-4 py-2">24小时</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">最终强度</td>
+                            <td class="border-b px-4 py-2">20 MPa</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">耐热性</td>
+                            <td class="border-b px-4 py-2">120℃</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="transportation" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5708AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2319</h3>
+                <p class="text-gray-600 mb-4">类型：交通运输粘接</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">EP</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">飞机、火车、汽车、轮船、其他</td>                                  </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">单组份</td>
+                        </tr>
+						<tr>
+						    <td class="border-b px-4 py-2">固化条件</td>
+						    <td class="border-b px-4 py-2">加热</td>
+						</tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合后粘度</td>
+                            <td class="border-b px-4 py-2">触变体 cps/23C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">适用期</td>
+                            <td class="border-b px-4 py-2">单组份</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">初强时间</td>
+                            <td class="border-b px-4 py-2">30分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">终强时间</td>
+                            <td class="border-b px-4 py-2">1小时</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">最终强度</td>
+                            <td class="border-b px-4 py-2">30 MPa</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">耐热性</td>
+                            <td class="border-b px-4 py-2">150℃</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 复制软包装的产品卡片作为建筑木工初始展示内容 -->
+            <div class="product-card bg-white p-6 rounded-md" data-categories="construction" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5706AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2501AB</h3>
+                <p class="text-gray-600 mb-4">类型：建筑木工</p>
+                <table class="w-full text-left mb-4">
+                    <thead>
+                        <tr>
+                            <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                            <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border-b px-4 py-2">化学体系</td>
+                            <td class="border-b px-4 py-2">EP</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">典型基材</td>
+                            <td class="border-b px-4 py-2">水泥、木材、金属、石材、瓷砖</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                            <td class="border-b px-4 py-2">100/50</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">固化条件</td>
+                            <td class="border-b px-4 py-2">室温</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">混合后粘度</td>
+                            <td class="border-b px-4 py-2">60000 cps/23C</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">适用期</td>
+                            <td class="border-b px-4 py-2">10分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">初强时间</td>
+                            <td class="border-b px-4 py-2">60分钟</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">终强时间</td>
+                            <td class="border-b px-4 py-2">24小时</td>
+                        </tr>
+                        <tr>
+                            <td class="border-b px-4 py-2">最终强度</td>
+                            <td class="border-b px-4 py-2">13 MPa</td>
+                        </tr>
+						<tr>
+                            <td class="border-b px-4 py-2">典型应用</td>
+                            <td class="border-b px-4 py-2">干挂石材</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="product-card bg-white p-6 rounded-md" data-categories="construction" style="display: none;">
+                <!-- <img src="https://via.placeholder.com/300x200/000000/000000" alt="Product U5708AB" class="w-full h-auto mb-4 rounded-md"> -->
+                <h3 class="text-xl font-bold text-gray-800 mb-2">E2503AB</h3>
+                <p class="text-gray-600 mb-4">类型：建筑木工</p>
+                <table class="w-full text-left mb-4">
+                                <thead>
+                                    <tr>
+                                        <th class="border-b px-4 py-2 text-gray-600">典型参数</th>
+                                        <th class="border-b px-4 py-2 text-gray-600">详情</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">化学体系</td>
+                                        <td class="border-b px-4 py-2">EP</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">典型基材</td>
+                                        <td class="border-b px-4 py-2">水泥、木材、金属、纤维、石材、瓷砖</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">混合比例（重量比）</td>
+                                        <td class="border-b px-4 py-2">100/33</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">固化条件</td>
+                                        <td class="border-b px-4 py-2">室温</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">混合后粘度</td>
+                                        <td class="border-b px-4 py-2">3000 cps/23C</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">适用期</td>
+                                        <td class="border-b px-4 py-2">25分钟</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">初强时间</td>
+                                        <td class="border-b px-4 py-2">60</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">终强时间</td>
+                                        <td class="border-b px-4 py-2">24小时</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border-b px-4 py-2">最终强度</td>
+                                        <td class="border-b px-4 py-2">20 MPa</td>
+                                    </tr>
+									<tr>
+                                        <td class="border-b px-4 py-2">典型应用</td>
+                                        <td class="border-b px-4 py-2">混凝土修复</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 应用领域 -->
+                <section class="bg-gray-200 py-16" id="application-field">
+                    <div class="container mx-auto px-4">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">应用领域</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                            <div class="bg-white p-6 rounded-md shadow-md">
+                                <img src="https://pic.imagurl.cn/imagurl/2025/04/30/681184885dc3c.png" alt="Application 1" loading="lazy" class="w-full h-auto mb-4 rounded-md">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">电子电器灌封胶</h3>
+                                <p class="text-gray-600">绝缘<br />防水<br />减震<br />散热</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-md shadow-md">
+                                <img src="https://pic.imagurl.cn/imagurl/2025/04/30/6811866493488.png" loading="lazy" alt="Application 2" class="w-full h-auto mb-4 rounded-md">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">交通运输粘接</h3>
+                                <p class="text-gray-600">胶水稳固汽车内饰零部件<br />胶水助力飞机部件的装配<br />胶水实现火车零件持久连接<br />胶水用于轮船金属密封粘接</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-md shadow-md">
+                                <img src="https://pic.imagurl.cn/imagurl/2025/04/30/6811863725163.png" loading="lazy" alt="Application 3" class="w-full h-auto mb-4 rounded-md">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">建筑木工</h3>
+                                <p class="text-gray-600">拼合木材，牢固衔接<br />
+加固框架，稳定结构<br />
+粘贴木饰，美化装饰<br />
+修补木材，延长寿命</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-md shadow-md">
+                                <img src="https://pic.imagurl.cn/imagurl/2025/04/30/681186eadd206.png" loading="lazy" alt="Application 4" class="w-full h-auto mb-4 rounded-md">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">PUR-反应型聚氨酯热熔胶</h3>
+                                <p class="text-gray-600">粘结电子元器件<br />
+密封汽车内饰件<br />
+固定家具木材件<br />
+贴合纺织物材料</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 技术优势 -->
+                <section class="container mx-auto px-4 py-16" id="technology-advantage">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">技术优势</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-md shadow-md">
+                            <i class="fa-solid fa-flask text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">先进研发技术</h3>
+                            <p class="text-gray-600">拥有专业的研发团队，不断创新和改进胶水配方。</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-md shadow-md">
+                            <i class="fa-solid fa-certificate text-4xl text-blue-500 mb-4"></i>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">严格质量控制</h3>
+                            <p class="text-gray-600">遵循国际标准，确保每一款产品都具有高品质和稳定性。</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-md shadow-md">
+                                        <i class="fa-solid fa-recycle text-4xl text-blue-500 mb-4"></i>
+                                        <h3 class="text-xl font-bold text-gray-800 mb-2">环保材料使用</h3>
+                                        <p class="text-gray-600">采用环保型原材料，减少对环境的影响。</p>
+                                    </div>
+                                    <div class="bg-white p-6 rounded-md shadow-md">
+                                        <i class="fa-solid fa-headset text-4xl text-blue-500 mb-4"></i>
+                                        <h3 class="text-xl font-bold text-gray-800 mb-2">优质客户服务</h3>
+                                        <p class="text-gray-600">提供全方位的技术支持和售后服务，让客户无后顾之忧。</p>
+                                    </div>
+                                </div>
+                            </section>
+                        
+                            <!-- 联系我们 -->
+                            <section class="bg-white py-16" id="contact-us">
+                                <div class="container mx-auto px-4">
+                                    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">联系我们</h2>
+                                    <div class="text-center">
+                                        <p class="text-gray-600 text-lg mb-4">如果您对我们的产品感兴趣，欢迎通过电话/微信咨询！</p>
+                                        <p class="text-blue-500 text-2xl font-bold mb-4">电话/微信：13827221962</p>
+                                    </div>
+                                </div>
+                            </section>
+                        
+                            <!-- 页脚 -->
+                            <footer class="bg-gray-800 text-white py-8">
+                                <div class="container mx-auto px-4">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                        <div>
+                                            <h3 class="text-xl font-bold mb-4">快速导航</h3>
+                                            <ul>
+                                                <li><a href="#" class="text-gray-400 hover:text-white" onclick="scrollToSection('hero-section')">首页</a></li>
+                                                <li><a href="#" class="text-gray-400 hover:text-white" onclick="scrollToSection('product-section')">产品系列</a></li>
+                                                <li><a href="#" class="text-gray-400 hover:text-white" onclick="scrollToSection('application-field')">应用领域</a></li>
+                                                <li><a href="#" class="text-gray-400 hover:text-white" onclick="scrollToSection('technology-advantage')">技术优势</a></li>
+                                                <li><a href="#" class="text-gray-400 hover:text-white" onclick="scrollToSection('contact-us')">联系我们</a></li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-bold mb-4">联系信息</h3>
+                                            <p>地址：上海市松江区金都西路888号C栋218室</p>
+                                            <p>电话/微信：13827221962</p>
+                                            <p>邮箱：leadhesives@163.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-8 text-gray-400">
+                                        &copy; 2025 上海优环邦德新材料科技有限公司. 保留所有权利.
+                                    </div>
+                                </div>
+                            </footer>
+                        
+                            <script>
+                                const menuToggle = document.getElementById('menu-toggle');
+                                const menu = document.getElementById('menu');
+                                const productSection = document.getElementById('product-section');
+                                const categoryButtons = productSection.querySelectorAll('button[data-category]');
+                                const productCards = productSection.querySelectorAll('.product-card');
+                        
+                                menuToggle.addEventListener('click', () => {
+                                    menu.classList.toggle('hidden');
+                                });
+                        
+                                categoryButtons.forEach(button => {
+                                    button.addEventListener('click', () => {
+                                        // 移除所有按钮的激活状态
+                                        categoryButtons.forEach(btn => {
+                                            btn.classList.remove('active');
+                                        });
+                                        // 给当前点击的按钮添加激活状态
+                                        button.classList.add('active');
+                        
+                                        const category = button.dataset.category;
+                                        productCards.forEach(card => {
+                                            const cardCategories = card.dataset.categories? card.dataset.categories.split(' ') : [];
+                                            if (category.split(' ').some(cat => cardCategories.includes(cat))) {
+                                                card.style.display = 'block';
+                                            } else {
+                                                card.style.display = 'none';
+                                            }
+                                        });
+                                    });
+                                });
+                        
+                                function scrollToSection(sectionId) {
+                                    const section = document.getElementById(sectionId);
+                                    if (section) {
+                                        const targetPosition = section.offsetTop;
+                                        const startPosition = window.pageYOffset;
+                                        const distance = targetPosition - startPosition;
+                                        const duration = 800;
+                                        let start = null;
+                        
+                                        function step(timestamp) {
+                                            if (!start) start = timestamp;
+                                            const progress = timestamp - start;
+                                            window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+                                            if (progress < duration) {
+                                                window.requestAnimationFrame(step);
+                                            }
+                                        }
+                        
+                                        function easeInOutCubic(t, b, c, d) {
+                                            t /= d / 2;
+                                            if (t < 1) return c / 2 * t * t * t + b;
+                                            t -= 2;
+                                            return c / 2 * (t * t * t + 2) + b;
+                                        }
+                        
+                                        window.requestAnimationFrame(step);
+                                    }
+                                }
+                            </script>
+                        </body>
+                        
+                        </html>
